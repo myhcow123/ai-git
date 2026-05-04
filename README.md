@@ -8,6 +8,26 @@
 
 AI-Git is a powerful text read/write system that provides unified text operation capabilities for AI models. It's not just a code indexing tool, but a complete workspace for models, including code management, task management, knowledge base, and document processing.
 
+## 💡 Core Advantage: Massive Token Savings
+
+**The Problem**: Traditional LLM-based code assistants read entire files on every interaction, causing token usage to accumulate rapidly across multiple iterations.
+
+**The Solution**: AI-Git's symbol-based architecture fundamentally changes this:
+
+- **Symbol-Level Access**: Query specific functions, classes, or symbols instead of entire files
+- **Structured Index**: Pre-parsed code structure enables precise, targeted queries
+- **Minimal Context**: Only relevant code snippets are included in LLM context
+
+**Real-World Evidence**: In our [LLM testing report](TEST_REPORT.md), a complex multi-file project implementation required 53 iterations but only consumed ~38K tokens total. Traditional approaches would require reading entire codebase on each iteration, leading to exponentially higher token usage.
+
+**Why It Matters**:
+- ✅ **Cost Efficiency**: Dramatically reduce API costs for LLM interactions
+- ✅ **Speed**: Smaller context means faster response times
+- ✅ **Scalability**: Handle large codebases without token limits
+- ✅ **Precision**: Work with exact symbols, not entire files
+
+See [TEST_REPORT.md](TEST_REPORT.md) for detailed analysis and [SUMMARY.md](SUMMARY.md) for test summary.
+
 ## 🎯 Key Highlights
 
 ### ⚡ Rapid Codebase Parsing
