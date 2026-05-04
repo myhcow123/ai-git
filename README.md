@@ -1,400 +1,400 @@
 # AI-Git
 
-**为 AI 模型设计的文本读写系统**
+**Text Read/Write System Designed for AI Models**
 
-**版本: 1.0.0**
+**Version: 1.0.0**
 
 [English](README_EN.md) | [中文](README_CN.md)
 
-AI-Git 是一个强大的文本读写系统，为 AI 模型提供统一的文本操作能力。它不仅仅是一个代码索引工具，而是模型的完整工作空间，包含代码管理、任务管理、知识库和文档处理。
+AI-Git is a powerful text read/write system that provides unified text operation capabilities for AI models. It's not just a code indexing tool, but a complete workspace for models, including code management, task management, knowledge base, and document processing.
 
-## 核心理念
+## Core Philosophy
 
 ```
-一切皆文本：
-├── 代码 = 文本
-├── Markdown = 文本
-├── 配置 = 文本
-└── 数据 = 文本
+Everything is text:
+├── Code = Text
+├── Markdown = Text
+├── Config = Text
+└── Data = Text
 
-核心操作：
-├── 读：解析文本 → 提取结构
-└── 写：生成文本 → 修改内容
+Core operations:
+├── Read: Parse text → Extract structure
+└── Write: Generate text → Modify content
 ```
 
-## 特性
+## Features
 
-### 🔍 代码分析
-- **多语言支持**: Go, Python, JavaScript, TypeScript, Rust, Java, C/C++
-- **符号提取**: 函数、类、变量、接口、结构体等
-- **依赖分析**: 代码依赖关系和影响分析
-- **PageRank 分析**: 代码重要性评估
+### 🔍 Code Analysis
+- **Multi-language Support**: Go, Python, JavaScript, TypeScript, Rust, Java, C/C++
+- **Symbol Extraction**: Functions, classes, variables, interfaces, structs, etc.
+- **Dependency Analysis**: Code dependency and impact analysis
+- **PageRank Analysis**: Code importance evaluation
 
-### 📝 文档处理
-- **Markdown 解析**: 标题、章节、代码块、待办列表
-- **结构化索引**: 快速查询文档内容
-- **自动监控**: 文件变化自动更新索引
+### 📝 Document Processing
+- **Markdown Parsing**: Headers, sections, code blocks, checklists
+- **Structured Indexing**: Fast document content queries
+- **Auto Monitoring**: Automatic index updates on file changes
 
-### 📋 任务管理
-- **任务创建**: 创建和拆解任务
-- **进度追踪**: 实时更新任务进度
-- **执行记录**: 记录每一步操作
-- **历史归档**: 完成任务自动归档
+### 📋 Task Management
+- **Task Creation**: Create and break down tasks
+- **Progress Tracking**: Real-time task progress updates
+- **Execution Logs**: Record every operation step
+- **History Archive**: Automatic archiving of completed tasks
 
-### 📚 知识库
-- **知识笔记**: 创建和管理知识笔记
-- **标签系统**: 灵活的标签分类
-- **代码关联**: 笔记与代码双向关联
-- **搜索导出**: 快速搜索和导出知识
+### 📚 Knowledge Base
+- **Knowledge Notes**: Create and manage knowledge notes
+- **Tag System**: Flexible tag categorization
+- **Code Association**: Bidirectional linking between notes and code
+- **Search & Export**: Fast search and export of knowledge
 
-### 🚀 性能优化
-- **内存缓存**: O(1) 快速查询
-- **实时索引**: 文件变化自动更新
-- **并发处理**: 并行解析提升性能
-- **REST API**: 远程访问支持
+### 🚀 Performance Optimization
+- **Memory Cache**: O(1) fast queries
+- **Real-time Indexing**: Automatic updates on file changes
+- **Concurrent Processing**: Parallel parsing for performance
+- **REST API**: Remote access support
 
-## 安装
+## Installation
 
 ```bash
-# 克隆仓库
-git clone https://github.com/mychow/ai-git.git
+# Clone repository
+git clone https://github.com/myhcow123/ai-git.git
 cd ai-git
 
-# 编译
+# Build
 go build -o ai-git .
 
-# 安装到系统
+# Install to system
 sudo mv ai-git /usr/local/bin/
 ```
 
-## 快速开始
+## Quick Start
 
-### 0. 启动后台服务（必须）
+### 0. Start Background Service (Required)
 
-**重要：使用 AI-Git 前必须先启动后台服务！**
+**Important: You must start the background service before using AI-Git!**
 
 ```bash
-# 启动后台服务
+# Start background service
 ai-git daemon start
 
-# 查看服务状态
+# Check service status
 ai-git daemon status
 
-# 停止服务
+# Stop service
 ai-git daemon stop
 ```
 
-后台服务启动后，索引将常驻内存，所有 CLI 命令将通过 API 快速访问，性能提升约 16 倍。
+Once the background service is started, the index will be kept in memory. All CLI commands will access it via API for approximately 16x performance improvement.
 
-### 1. 初始化项目
+### 1. Initialize Project
 
 ```bash
-# 在项目目录初始化
+# Initialize in project directory
 ai-git init
 
-# 查看项目概览
+# View project overview
 ai-git overview
 ```
 
-### 2. 查询代码
+### 2. Query Code
 
 ```bash
-# 搜索符号
+# Search symbols
 ai-git search "handler"
 
-# 查询符号详情
+# Query symbol details
 ai-git symbol "Process"
 
-# 读取代码
+# Read code
 ai-git read main.go:10-20
 ai-git read Process
 ```
 
-### 3. 修改代码
+### 3. Modify Code
 
 ```bash
-# 插入代码
+# Insert code
 ai-git insert main.go:10 --code "// comment"
 
-# 替换代码
+# Replace code
 ai-git replace Process --with "func Process() { ... }"
 
-# 删除代码
+# Delete code
 ai-git delete OldFunction
 ```
 
-### 4. 任务管理
+### 4. Task Management
 
 ```bash
-# 创建任务
-ai-git task create "实现用户认证" --priority high
+# Create task
+ai-git task create "Implement user authentication" --priority high
 
-# 更新进度
+# Update progress
 ai-git task update task-001 --progress 50
 
-# 完成任务
+# Complete task
 ai-git task complete task-001
 
-# 查看任务列表
+# View task list
 ai-git task list
 ```
 
-### 5. 知识管理
+### 5. Knowledge Management
 
 ```bash
-# 创建笔记
-ai-git note create "Go 并发模式" --tags "go,concurrency"
+# Create note
+ai-git note create "Go Concurrency Patterns" --tags "go,concurrency"
 
-# 搜索知识
-ai-git note search "并发"
+# Search knowledge
+ai-git note search "concurrency"
 
-# 关联代码
+# Link code
 ai-git note link note-001 --code "worker.go:Process"
 
-# 导出知识
+# Export knowledge
 ai-git note export --format markdown
 ```
 
-### 6. 启动服务
+### 6. Start Service
 
 ```bash
-# 启动 API 服务
+# Start API service
 ai-git web --port 8080
 
-# 访问 API
+# Access API
 curl http://localhost:8080/api/v1/search?q=handler
 ```
 
-## 📁 配置文件
+## 📁 Configuration Files
 
-AI-Git 使用隐藏目录存储配置和数据：
+AI-Git uses hidden directories to store configuration and data:
 
-### 全局配置（用户级别）
+### Global Configuration (User Level)
 ```
-~/.ai-git/              # 全局配置目录
-├── config.json         # 全局配置
-├── daemon.json         # 后台服务信息
-├── daemon.pid          # 后台服务进程ID
-├── tasks/              # 任务数据
-├── notes/              # 笔记数据
-├── queries/            # 查询模板
-└── plugins/            # 插件目录
-```
-
-### 项目配置（项目级别）
-```
-项目目录/.ai-git/       # 项目配置目录
-└── ai-git.db           # 项目数据库
+~/.ai-git/              # Global config directory
+├── config.json         # Global configuration
+├── daemon.json         # Background service info
+├── daemon.pid          # Background service process ID
+├── tasks/              # Task data
+├── notes/              # Note data
+├── queries/            # Query templates
+└── plugins/            # Plugin directory
 ```
 
-### 查看配置
+### Project Configuration (Project Level)
+```
+project/.ai-git/        # Project config directory
+└── ai-git.db           # Project database
+```
+
+### View Configuration
 ```bash
-# 查看全局配置
+# View global configuration
 cat ~/.ai-git/config.json
 
-# 查看项目数据库
+# View project database
 ls -la .ai-git/
 ```
 
-**注意：配置文件是可选的，AI-Git 可以直接使用默认配置工作！**
+**Note: Configuration files are optional. AI-Git can work with default settings!**
 
-## 命令概览
+## Command Overview
 
-### 查询命令
-| 命令 | 说明 |
-|------|------|
-| `search` | 搜索符号 |
-| `symbol` | 查询符号详情 |
-| `read` | 读取代码或文件 |
-| `overview` | 项目概览 |
-| `status` | 项目状态 |
+### Query Commands
+| Command | Description |
+|---------|-------------|
+| `search` | Search symbols |
+| `symbol` | Query symbol details |
+| `read` | Read code or files |
+| `overview` | Project overview |
+| `status` | Project status |
 
-### 修改命令
-| 命令 | 说明 |
-|------|------|
-| `modify` | 修改代码 |
-| `insert` | 插入代码 |
-| `replace` | 替换代码 |
-| `delete` | 删除代码 |
-| `refactor` | 重构代码 |
-| `batch` | 批量修改 |
+### Modify Commands
+| Command | Description |
+|---------|-------------|
+| `modify` | Modify code |
+| `insert` | Insert code |
+| `replace` | Replace code |
+| `delete` | Delete code |
+| `refactor` | Refactor code |
+| `batch` | Batch modifications |
 
-### 分析命令
-| 命令 | 说明 |
-|------|------|
-| `analyze` | PageRank 分析 |
-| `deps` | 依赖分析 |
-| `impact` | 影响分析 |
-| `quality` | 代码质量评估 |
-| `pattern` | 设计模式识别 |
+### Analysis Commands
+| Command | Description |
+|---------|-------------|
+| `analyze` | PageRank analysis |
+| `deps` | Dependency analysis |
+| `impact` | Impact analysis |
+| `quality` | Code quality assessment |
+| `pattern` | Design pattern recognition |
 
-### 任务命令
-| 命令 | 说明 |
-|------|------|
-| `task create` | 创建任务 |
-| `task list` | 列出任务 |
-| `task update` | 更新任务 |
-| `task complete` | 完成任务 |
-| `task log` | 记录执行日志 |
+### Task Commands
+| Command | Description |
+|---------|-------------|
+| `task create` | Create task |
+| `task list` | List tasks |
+| `task update` | Update task |
+| `task complete` | Complete task |
+| `task log` | Record execution log |
 
-### 笔记命令
-| 命令 | 说明 |
-|------|------|
-| `note create` | 创建笔记 |
-| `note list` | 列出笔记 |
-| `note search` | 搜索笔记 |
-| `note link` | 关联代码 |
-| `note export` | 导出笔记 |
+### Note Commands
+| Command | Description |
+|---------|-------------|
+| `note create` | Create note |
+| `note list` | List notes |
+| `note search` | Search notes |
+| `note link` | Link code |
+| `note export` | Export notes |
 
-### 项目命令
-| 命令 | 说明 |
-|------|------|
-| `init` | 初始化项目 |
-| `workspace` | 工作区管理 |
-| `web` | 启动 API 服务 |
-| `plugin` | 插件管理 |
+### Project Commands
+| Command | Description |
+|---------|-------------|
+| `init` | Initialize project |
+| `workspace` | Workspace management |
+| `web` | Start API service |
+| `plugin` | Plugin management |
 
-## 架构
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
-│           AI-Git: 文本读写系统               │
+│         AI-Git: Text Read/Write System       │
 │                                             │
-│  代码层                                     │
-│  ├── 7 种语言解析                           │
-│  ├── 符号提取和索引                         │
-│  ├── 依赖和影响分析                         │
-│  └── 修改和重构                             │
+│  Code Layer                                 │
+│  ├── 7 language parsers                     │
+│  ├── Symbol extraction & indexing           │
+│  ├── Dependency & impact analysis           │
+│  └── Modification & refactoring             │
 │                                             │
-│  任务层                                     │
-│  ├── 任务创建和拆解                         │
-│  ├── 进度追踪                               │
-│  ├── 执行记录                               │
-│  └── 历史归档                               │
+│  Task Layer                                 │
+│  ├── Task creation & breakdown              │
+│  ├── Progress tracking                      │
+│  ├── Execution logs                         │
+│  └── History archive                        │
 │                                             │
-│  知识层                                     │
-│  ├── 知识笔记                               │
-│  ├── 上下文管理                             │
-│  ├── 代码关联                               │
-│  └── 搜索和导出                             │
+│  Knowledge Layer                            │
+│  ├── Knowledge notes                        │
+│  ├── Context management                     │
+│  ├── Code association                       │
+│  └── Search & export                        │
 │                                             │
-│  文档层                                     │
-│  ├── Markdown 解析                          │
-│  ├── 标题和章节索引                         │
-│  ├── 待办列表追踪                           │
-│  └── 代码块提取                             │
+│  Document Layer                             │
+│  ├── Markdown parsing                       │
+│  ├── Header & section indexing              │
+│  ├── Checklist tracking                     │
+│  └── Code block extraction                  │
 │                                             │
-│  服务层                                     │
+│  Service Layer                              │
 │  ├── REST API                               │
-│  ├── 文件监控                               │
-│  ├── 实时索引                               │
-│  └── 内存缓存                               │
+│  ├── File watching                          │
+│  ├── Real-time indexing                     │
+│  └── Memory cache                           │
 └─────────────────────────────────────────────┘
 ```
 
-## 项目结构
+## Project Structure
 
 ```
 ai-git/
-├── cmd/                    # 命令行工具
-│   ├── root.go            # 根命令
-│   ├── task.go            # 任务管理命令
-│   ├── note.go            # 笔记管理命令
-│   └── ...                # 其他命令
+├── cmd/                    # CLI tools
+│   ├── root.go            # Root command
+│   ├── task.go            # Task management commands
+│   ├── note.go            # Note management commands
+│   └── ...                # Other commands
 │
-├── internal/              # 内部包
-│   ├── parser/           # 解析器
-│   │   ├── parser.go     # 核心解析器
-│   │   ├── parser_go.go  # Go 解析
-│   │   ├── parser_markdown.go # Markdown 解析
-│   │   └── ...           # 其他语言解析
+├── internal/              # Internal packages
+│   ├── parser/           # Parsers
+│   │   ├── parser.go     # Core parser
+│   │   ├── parser_go.go  # Go parser
+│   │   ├── parser_markdown.go # Markdown parser
+│   │   └── ...           # Other language parsers
 │   │
-│   ├── task/             # 任务管理
-│   ├── note/             # 知识库管理
-│   ├── storage/          # 存储层
-│   ├── watcher/          # 文件监控
+│   ├── task/             # Task management
+│   ├── note/             # Knowledge base management
+│   ├── storage/          # Storage layer
+│   ├── watcher/          # File watching
 │   └── api/              # REST API
 │
-├── pkg/                   # 公共包
-│   ├── types/            # 类型定义
-│   └── utils/            # 工具函数
+├── pkg/                   # Public packages
+│   ├── types/            # Type definitions
+│   └── utils/            # Utility functions
 │
-└── main.go               # 入口文件
+└── main.go               # Entry point
 ```
 
-## API 文档
+## API Documentation
 
-### 搜索
+### Search
 ```
 GET /api/v1/search?q=handler
 ```
 
-### 符号查询
+### Symbol Query
 ```
 GET /api/v1/symbol/:name
 ```
 
-### 项目概览
+### Project Overview
 ```
 GET /api/v1/overview
 ```
 
-### 任务管理
+### Task Management
 ```
 POST /api/v1/projects
 GET /api/v1/projects
 DELETE /api/v1/projects/:id
 ```
 
-### 监控状态
+### Watcher Status
 ```
 GET /api/v1/status/watcher
 ```
 
-## 开发
+## Development
 
-### 构建
+### Build
 ```bash
 make build
 ```
 
-### 测试
+### Test
 ```bash
 make test
 ```
 
-### 清理
+### Clean
 ```bash
 make clean
 ```
 
-## 技术栈
+## Tech Stack
 
-- **语言**: Go 1.21+
-- **数据库**: BoltDB (持久化) + 内存缓存
-- **解析器**: 自定义解析器 (支持 7 种语言)
+- **Language**: Go 1.21+
+- **Database**: BoltDB (persistence) + Memory cache
+- **Parser**: Custom parsers (7 languages)
 - **API**: REST API
-- **监控**: fsnotify
+- **Monitoring**: fsnotify
 
-## 统计
+## Statistics
 
-- **代码行数**: ~11,745 行
-- **文件数量**: 55 个 Go 文件
-- **支持语言**: 7 种 (Go, Python, JavaScript, TypeScript, Rust, Java, C/C++)
-- **命令数量**: 40+ 个命令
+- **Lines of Code**: ~11,745
+- **Files**: 55 Go files
+- **Languages**: 7 (Go, Python, JavaScript, TypeScript, Rust, Java, C/C++)
+- **Commands**: 40+ commands
 
-## 贡献
+## Contributing
 
-欢迎贡献代码、报告问题或提出建议！
+Contributions, bug reports, and suggestions are welcome!
 
-## 许可证
+## License
 
 MIT License
 
-## 作者
+## Author
 
 GLM-5
 
 ---
 
-**AI-Git: 为 AI 模型设计的文本读写系统**
+**AI-Git: Text Read/Write System Designed for AI Models**
