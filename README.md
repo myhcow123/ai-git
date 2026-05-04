@@ -8,6 +8,31 @@
 
 AI-Git is a powerful text read/write system that provides unified text operation capabilities for AI models. It's not just a code indexing tool, but a complete workspace for models, including code management, task management, knowledge base, and document processing.
 
+## 🎯 Key Highlights
+
+### ⚡ Rapid Codebase Parsing
+- **Multi-language Support**: Parse 7 languages (Go, Python, JavaScript, TypeScript, Rust, Java, C/C++)
+- **Fast Indexing**: Concurrent parsing with memory cache for O(1) queries
+- **Real-time Updates**: Automatic re-indexing on file changes via file watcher
+- **Symbol Extraction**: Extract functions, classes, variables, interfaces, structs, etc.
+- **Dependency Graph**: Build and analyze code dependency relationships
+
+### 🔍 Advanced Symbol System
+- **Symbol Search**: Fast fuzzy search across all symbols
+- **Symbol Details**: Get complete information about any symbol (type, location, signature, documentation)
+- **Usage Tracking**: Find all usages of a symbol across the codebase
+- **Dependency Analysis**: Show what a symbol depends on and what depends on it
+- **Impact Analysis**: Analyze the impact of modifying a symbol
+- **PageRank Analysis**: Identify the most important symbols in your codebase
+
+### 🛠️ Comprehensive Tool Suite
+- **40+ CLI Commands**: Query, modify, analyze, and manage your codebase
+- **REST API**: Full-featured API for remote access and integration
+- **Batch Operations**: Execute modifications on multiple files simultaneously
+- **Undo System**: Safely undo recent modifications with full history tracking
+- **Workspace Management**: Manage multiple projects with isolated databases
+- **Background Service**: Daemon mode for persistent indexing and fast queries
+
 ## Core Philosophy
 
 ```
@@ -29,6 +54,9 @@ Core operations:
 - **Symbol Extraction**: Functions, classes, variables, interfaces, structs, etc.
 - **Dependency Analysis**: Code dependency and impact analysis
 - **PageRank Analysis**: Code importance evaluation
+- **Quality Assessment**: Complexity, testability, maintainability, security analysis
+- **Pattern Recognition**: Identify design patterns in your code
+- **Intent Inference**: Understand the purpose of code symbols
 
 ### 📝 Document Processing
 - **Markdown Parsing**: Headers, sections, code blocks, checklists
@@ -108,6 +136,15 @@ ai-git symbol "Process"
 # Read code
 ai-git read main.go:10-20
 ai-git read Process
+
+# Find all usages of a symbol
+ai-git usages functionName
+
+# Show symbol dependencies
+ai-git deps Process
+
+# Analyze modification impact
+ai-git impact Process
 ```
 
 ### 3. Modify Code
@@ -121,9 +158,36 @@ ai-git replace Process --with "func Process() { ... }"
 
 # Delete code
 ai-git delete OldFunction
+
+# Batch modifications
+ai-git batch modifications.json
+
+# Undo recent modifications
+ai-git undo          # Undo last modification
+ai-git undo 3        # Undo last 3 modifications
+ai-git undo --list   # List recent modifications
 ```
 
-### 4. Task Management
+### 4. Analyze Code
+
+```bash
+# PageRank analysis - find most important symbols
+ai-git analyze --top 10
+
+# Code quality assessment
+ai-git quality Process
+
+# Design pattern recognition
+ai-git pattern Handler
+
+# Intent inference
+ai-git intent main
+
+# Dependency analysis with depth
+ai-git deps Process --depth 2
+```
+
+### 5. Task Management
 
 ```bash
 # Create task
@@ -139,7 +203,7 @@ ai-git task complete task-001
 ai-git task list
 ```
 
-### 5. Knowledge Management
+### 6. Knowledge Management
 
 ```bash
 # Create note
@@ -155,7 +219,42 @@ ai-git note link note-001 --code "worker.go:Process"
 ai-git note export --format markdown
 ```
 
-### 6. Start Service
+### 7. Query System (AQL)
+
+```bash
+# List all predefined queries
+ai-git query list
+
+# Show query details
+ai-git query show find_entry_points
+
+# Search queries
+ai-git query search "api"
+
+# Execute a query
+ai-git query exec find_high_complexity
+
+# List query categories
+ai-git query categories
+```
+
+### 8. Workspace Management
+
+```bash
+# Create a new workspace
+ai-git workspace create myproject
+
+# List all workspaces
+ai-git workspace list
+
+# Switch workspace
+ai-git workspace use myproject
+
+# Configure workspace
+ai-git workspace config set key value
+```
+
+### 9. Start Service
 
 ```bash
 # Start API service
@@ -198,61 +297,127 @@ ls -la .ai-git/
 
 **Note: Configuration files are optional. AI-Git can work with default settings!**
 
-## Command Overview
+## 📚 Complete Command Reference
 
 ### Query Commands
-| Command | Description |
-|---------|-------------|
-| `search` | Search symbols |
-| `symbol` | Query symbol details |
-| `read` | Read code or files |
-| `overview` | Project overview |
-| `status` | Project status |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `search` | Search symbols with fuzzy matching | `ai-git search "handler"` |
+| `symbol` | Get detailed symbol information | `ai-git symbol Process` |
+| `read` | Read code or files | `ai-git read main.go:10-20` |
+| `overview` | Get project overview | `ai-git overview` |
+| `status` | Check project status | `ai-git status` |
+| `usages` | Find all usages of a symbol | `ai-git usages functionName` |
 
 ### Modify Commands
-| Command | Description |
-|---------|-------------|
-| `modify` | Modify code |
-| `insert` | Insert code |
-| `replace` | Replace code |
-| `delete` | Delete code |
-| `refactor` | Refactor code |
-| `batch` | Batch modifications |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `modify` | Modify code with AI assistance | `ai-git modify Process` |
+| `insert` | Insert code at specific location | `ai-git insert main.go:10 --code "..."` |
+| `replace` | Replace code | `ai-git replace Process --with "..."` |
+| `delete` | Delete code | `ai-git delete OldFunction` |
+| `refactor` | Refactor code | `ai-git refactor Process` |
+| `batch` | Execute batch modifications | `ai-git batch mods.json` |
+| `undo` | Undo recent modifications | `ai-git undo 3` |
 
 ### Analysis Commands
-| Command | Description |
-|---------|-------------|
-| `analyze` | PageRank analysis |
-| `deps` | Dependency analysis |
-| `impact` | Impact analysis |
-| `quality` | Code quality assessment |
-| `pattern` | Design pattern recognition |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `analyze` | PageRank analysis for code importance | `ai-git analyze --top 10` |
+| `deps` | Show symbol dependencies | `ai-git deps Process --depth 2` |
+| `impact` | Analyze modification impact | `ai-git impact Process` |
+| `quality` | Assess code quality | `ai-git quality Process` |
+| `pattern` | Recognize design patterns | `ai-git pattern Handler` |
+| `intent` | Infer code intent | `ai-git intent main` |
+
+### Query System (AQL)
+| Command | Description | Example |
+|---------|-------------|---------|
+| `query list` | List all queries | `ai-git query list` |
+| `query show` | Show query details | `ai-git query show find_entry_points` |
+| `query search` | Search queries | `ai-git query search "api"` |
+| `query exec` | Execute a query | `ai-git query exec find_high_complexity` |
+| `query categories` | List categories | `ai-git query categories` |
 
 ### Task Commands
-| Command | Description |
-|---------|-------------|
-| `task create` | Create task |
-| `task list` | List tasks |
-| `task update` | Update task |
-| `task complete` | Complete task |
-| `task log` | Record execution log |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `task create` | Create a new task | `ai-git task create "..." --priority high` |
+| `task list` | List all tasks | `ai-git task list` |
+| `task update` | Update task progress | `ai-git task update task-001 --progress 50` |
+| `task complete` | Mark task as complete | `ai-git task complete task-001` |
+| `task log` | Record execution log | `ai-git task log task-001 "..."` |
 
 ### Note Commands
-| Command | Description |
-|---------|-------------|
-| `note create` | Create note |
-| `note list` | List notes |
-| `note search` | Search notes |
-| `note link` | Link code |
-| `note export` | Export notes |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `note create` | Create a knowledge note | `ai-git note create "..." --tags "go"` |
+| `note list` | List all notes | `ai-git note list` |
+| `note search` | Search notes | `ai-git note search "concurrency"` |
+| `note link` | Link note to code | `ai-git note link note-001 --code "..."` |
+| `note export` | Export notes | `ai-git note export --format markdown` |
 
-### Project Commands
-| Command | Description |
-|---------|-------------|
-| `init` | Initialize project |
-| `workspace` | Workspace management |
-| `web` | Start API service |
-| `plugin` | Plugin management |
+### Workspace Commands
+| Command | Description | Example |
+|---------|-------------|---------|
+| `workspace create` | Create a workspace | `ai-git workspace create myproject` |
+| `workspace list` | List workspaces | `ai-git workspace list` |
+| `workspace use` | Switch workspace | `ai-git workspace use myproject` |
+| `workspace config` | Configure workspace | `ai-git workspace config set key value` |
+| `workspace index` | Index workspace | `ai-git workspace index` |
+
+### Service Commands
+| Command | Description | Example |
+|---------|-------------|---------|
+| `daemon start` | Start background service | `ai-git daemon start` |
+| `daemon stop` | Stop background service | `ai-git daemon stop` |
+| `daemon status` | Check service status | `ai-git daemon status` |
+| `web` | Start REST API server | `ai-git web --port 8080` |
+
+### Other Commands
+| Command | Description | Example |
+|---------|-------------|---------|
+| `init` | Initialize project | `ai-git init` |
+| `version` | Show version | `ai-git version` |
+| `edit` | Edit code with editor | `ai-git edit main.go` |
+| `explain` | Explain code | `ai-git explain Process` |
+| `test` | Run tests | `ai-git test` |
+| `deploy` | Deploy code | `ai-git deploy` |
+
+## 🎯 AQL Query Library
+
+AI-Git includes a powerful query system with predefined templates:
+
+### Available Query Categories
+
+1. **Exploration**: Find functions, classes, and entry points
+2. **Analysis**: Analyze code structure and patterns
+3. **Quality**: Find high complexity code and technical debt
+4. **Testing**: Locate test code and coverage gaps
+5. **API**: Find API endpoints and handlers
+6. **Database**: Locate database operations
+7. **Security**: Identify security-sensitive code
+8. **Utilities**: Find utility functions and helpers
+9. **Architecture**: Analyze interfaces and abstractions
+
+### Example Queries
+
+```bash
+# Find all entry points (main functions, handlers)
+ai-git query exec find_entry_points
+
+# Find high complexity functions
+ai-git query exec find_high_complexity
+
+# Find API endpoints
+ai-git query exec find_api_endpoints
+
+# Find security-sensitive code
+ai-git query exec find_security_sensitive
+
+# Find test code
+ai-git query exec find_test_code
+```
 
 ## Architecture
 
@@ -264,7 +429,15 @@ ls -la .ai-git/
 │  ├── 7 language parsers                     │
 │  ├── Symbol extraction & indexing           │
 │  ├── Dependency & impact analysis           │
-│  └── Modification & refactoring             │
+│  ├── Modification & refactoring             │
+│  ├── Quality assessment & patterns          │
+│  └── Usage tracking & undo system           │
+│                                             │
+│  Query Layer (AQL)                          │
+│  ├── Predefined query templates             │
+│  ├── Query execution engine                 │
+│  ├── Category management                    │
+│  └── Custom query support                   │
 │                                             │
 │  Task Layer                                 │
 │  ├── Task creation & breakdown              │
@@ -288,7 +461,8 @@ ls -la .ai-git/
 │  ├── REST API                               │
 │  ├── File watching                          │
 │  ├── Real-time indexing                     │
-│  └── Memory cache                           │
+│  ├── Memory cache                           │
+│  └── Background daemon                      │
 └─────────────────────────────────────────────┘
 ```
 
@@ -298,16 +472,34 @@ ls -la .ai-git/
 ai-git/
 ├── cmd/                    # CLI tools
 │   ├── root.go            # Root command
+│   ├── query.go           # Query commands
 │   ├── task.go            # Task management commands
 │   ├── note.go            # Note management commands
+│   ├── workspace*.go      # Workspace management
+│   ├── advanced.go        # Analysis commands
+│   ├── tools.go           # Utility commands
 │   └── ...                # Other commands
 │
 ├── internal/              # Internal packages
 │   ├── parser/           # Parsers
 │   │   ├── parser.go     # Core parser
 │   │   ├── parser_go.go  # Go parser
-│   │   ├── parser_markdown.go # Markdown parser
+│   │   ├── parser_c.go   # C/C++ parser
 │   │   └── ...           # Other language parsers
+│   │
+│   ├── query/            # Query management
+│   │   ├── manager.go    # Query manager
+│   │   └── engine.go     # Query execution engine
+│   │
+│   ├── aql/              # AI Query Language
+│   │   ├── parser.go     # AQL parser
+│   │   └── engine.go     # AQL engine
+│   │
+│   ├── graph/            # Graph analysis
+│   │   └── symbol.go     # Symbol graph & PageRank
+│   │
+│   ├── semantic/         # Semantic analysis
+│   │   └── semantic.go   # Intent inference
 │   │
 │   ├── task/             # Task management
 │   ├── note/             # Knowledge base management
@@ -318,6 +510,13 @@ ai-git/
 ├── pkg/                   # Public packages
 │   ├── types/            # Type definitions
 │   └── utils/            # Utility functions
+│
+├── queries/               # Predefined AQL queries
+│   ├── analysis.json     # Analysis queries
+│   ├── api.json          # API queries
+│   ├── quality.json      # Quality queries
+│   ├── security.json     # Security queries
+│   └── ...               # Other query categories
 │
 └── main.go               # Entry point
 ```
@@ -375,6 +574,7 @@ make clean
 - **Parser**: Custom parsers (7 languages)
 - **API**: REST API
 - **Monitoring**: fsnotify
+- **Analysis**: PageRank, dependency graphs, semantic analysis
 
 ## Statistics
 
@@ -382,6 +582,28 @@ make clean
 - **Files**: 55 Go files
 - **Languages**: 7 (Go, Python, JavaScript, TypeScript, Rust, Java, C/C++)
 - **Commands**: 40+ commands
+- **Query Templates**: 10+ predefined queries
+- **Test Coverage**: 51.9%
+
+## Use Cases
+
+### For AI Models
+- **Code Understanding**: Rapidly parse and understand large codebases
+- **Code Generation**: Generate code with full context awareness
+- **Refactoring**: Safe refactoring with impact analysis
+- **Documentation**: Auto-generate documentation from code
+
+### For Developers
+- **Code Navigation**: Fast symbol search and navigation
+- **Code Review**: Identify quality issues and patterns
+- **Dependency Management**: Understand code dependencies
+- **Technical Debt**: Find high complexity and problematic code
+
+### For Teams
+- **Knowledge Sharing**: Document and share code knowledge
+- **Onboarding**: Help new developers understand the codebase
+- **Code Quality**: Monitor and improve code quality
+- **Security Audits**: Identify security-sensitive code
 
 ## Contributing
 
