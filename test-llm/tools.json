@@ -1,0 +1,16 @@
+[
+  {
+    "name": "terminal",
+    "description": "Execute a bash command in the terminal",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "cmd": {
+          "type": "string",
+          "description": "The bash command to execute"
+        }
+      },
+      "required": ["cmd"]
+    }
+  }
+]

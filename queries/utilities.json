@@ -1,0 +1,16 @@
+{
+  "name": "find_utility_functions",
+  "description": "Find utility and helper functions",
+  "category": "utilities",
+  "query": "FIND function WHERE file LIKE \"*util*\" OR file LIKE \"*helper*\" OR name LIKE \"*Util*\" OR name LIKE \"*Helper*\"",
+  "examples": [
+    "FIND function WHERE file LIKE \"*util*\"",
+    "FIND function WHERE name LIKE \"*Helper*\"",
+    "FIND function WHERE file LIKE \"*common*\" OR file LIKE \"*shared*\""
+  ],
+  "use_cases": [
+    "Find reusable utilities",
+    "Identify common helpers",
+    "Avoid code duplication"
+  ]
+}

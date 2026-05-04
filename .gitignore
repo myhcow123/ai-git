@@ -1,0 +1,61 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+ai-git
+test-llm/test-llm
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Dependency directories
+vendor/
+
+# Build directories
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AI-Git specific
+.ai-git/
+*.db
+*.db.lock
+
+# Logs
+*.log
+log_*.txt
+
+# Test outputs
+output_done.txt
+
+# Environment variables
+.env
+.env.local
+
+# Config with sensitive data (keep template)
+test-llm/config.json
+
+# Compiled test programs
+test-llm/evidence/taskmanager
+
+# Temporary files
+tmp/
+temp/

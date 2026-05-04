@@ -1,0 +1,16 @@
+{
+  "name": "find_classes",
+  "description": "Find all class definitions",
+  "category": "exploration",
+  "query": "FIND class",
+  "examples": [
+    "FIND class",
+    "FIND class WHERE name LIKE \"*Service*\"",
+    "FIND class WHERE file = \"models.py\""
+  ],
+  "use_cases": [
+    "Understand class structure",
+    "Find service classes",
+    "Analyze object-oriented design"
+  ]
+}

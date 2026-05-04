@@ -1,0 +1,16 @@
+{
+  "name": "find_entry_points",
+  "description": "Find all entry points (main functions, handlers, etc.)",
+  "category": "analysis",
+  "query": "FIND function WHERE name = \"main\" OR name LIKE \"*Handler\" OR name LIKE \"*Controller\"",
+  "examples": [
+    "FIND function WHERE name = \"main\"",
+    "FIND function WHERE name LIKE \"*Handler\"",
+    "FIND function WHERE name LIKE \"*Controller\""
+  ],
+  "use_cases": [
+    "Identify application entry points",
+    "Find HTTP handlers",
+    "Find controller methods"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "find_interfaces",
+  "description": "Find all interface definitions",
+  "category": "architecture",
+  "query": "FIND interface",
+  "examples": [
+    "FIND interface",
+    "FIND interface WHERE name LIKE \"*Repository*\"",
+    "FIND interface WHERE method_count > 5"
+  ],
+  "use_cases": [
+    "Understand abstraction layers",
+    "Find repository interfaces",
+    "Analyze API contracts"
+  ]
+}

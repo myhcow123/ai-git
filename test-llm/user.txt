@@ -1,0 +1,110 @@
+Please complete the following complex programming task using AI-Git tools:
+
+## Task Background
+Implement a complete Task Management System in the test project /home/mychow/Documents/cs/test-ai-git. This system should support creating, reading, updating, and deleting tasks with file persistence.
+
+## Requirements
+
+### 1. Task Planning (Use AI-Git Task Management)
+Create main task: "Implement Task Management System"
+Create subtasks:
+- "Design data structures"
+- "Implement task storage"
+- "Implement CRUD operations"
+- "Implement CLI interface"
+- "Add error handling"
+- "Write unit tests"
+- "Create documentation"
+
+### 2. Environment Setup
+- Start AI-Git background service
+- Initialize test project
+- Create Go module
+
+### 3. Implementation Requirements
+
+#### 3.1 Data Structures (task.go)
+Create a Task struct with the following fields:
+- ID (string, auto-generated)
+- Title (string, required)
+- Description (string, optional)
+- Status (enum: pending, in_progress, completed)
+- Priority (enum: low, medium, high)
+- CreatedAt (time.Time)
+- UpdatedAt (time.Time)
+
+#### 3.2 Storage Layer (storage.go)
+Implement TaskStorage with:
+- Save tasks to JSON file (tasks.json)
+- Load tasks from JSON file
+- Auto-generate unique IDs
+- Handle file errors gracefully
+
+#### 3.3 CRUD Operations (manager.go)
+Implement TaskManager with methods:
+- Create(title, description string, priority Priority) (*Task, error)
+- Get(id string) (*Task, error)
+- List(status Status) ([]*Task, error)
+- Update(id string, updates map[string]interface{}) (*Task, error)
+- Delete(id string) error
+- Complete(id string) error
+
+#### 3.4 CLI Interface (main.go)
+Create command-line interface with commands:
+- `add <title> [-d description] [-p priority]` - Create new task
+- `list [-s status]` - List tasks
+- `show <id>` - Show task details
+- `update <id> [-t title] [-d description] [-s status] [-p priority]` - Update task
+- `complete <id>` - Mark task as completed
+- `delete <id>` - Delete task
+
+#### 3.5 Error Handling
+- Validate required fields
+- Handle file I/O errors
+- Return meaningful error messages
+- Log errors appropriately
+
+#### 3.6 Unit Tests (manager_test.go)
+Write comprehensive tests:
+- Test CRUD operations
+- Test error cases
+- Test edge cases
+- Achieve >80% code coverage
+
+### 4. Code Quality
+- Add comments for all exported functions
+- Use proper Go formatting (gofmt)
+- Follow Go best practices
+- Handle all errors
+- No code duplication
+
+### 5. Documentation
+Create README.md with:
+- Project description
+- Installation instructions
+- Usage examples
+- API documentation
+
+### 6. Task Tracking
+- Update task progress after completing each subtask
+- Mark all tasks as completed when done
+
+### 7. Cleanup
+- Stop AI-Git background service
+
+## Notes
+- Use AI-Git task management features to track progress
+- Use AI-Git code query and modification features
+- Verify each component works before moving to the next
+- Test the complete system end-to-end
+- Ensure all tests pass before completion
+- Use proper Go project structure
+
+## Success Criteria
+- All CRUD operations work correctly
+- Data persists across program restarts
+- CLI interface is user-friendly
+- All tests pass
+- Code coverage >80%
+- No compilation errors or warnings
+- README.md is complete and accurate

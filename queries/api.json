@@ -1,0 +1,16 @@
+{
+  "name": "find_api_endpoints",
+  "description": "Find API endpoint definitions",
+  "category": "api",
+  "query": "FIND function WHERE annotation LIKE \"@Route\" OR annotation LIKE \"@Get\" OR annotation LIKE \"@Post\"",
+  "examples": [
+    "FIND function WHERE annotation LIKE \"@Route\"",
+    "FIND function WHERE annotation LIKE \"@Get\" OR annotation LIKE \"@Post\"",
+    "FIND function WHERE name LIKE \"*Handler\" AND file LIKE \"*route*\""
+  ],
+  "use_cases": [
+    "Document API endpoints",
+    "Find route definitions",
+    "Analyze API structure"
+  ]
+}

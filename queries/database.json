@@ -1,0 +1,16 @@
+{
+  "name": "find_database_operations",
+  "description": "Find database-related functions",
+  "category": "database",
+  "query": "FIND function WHERE name LIKE \"*DB*\" OR name LIKE \"*Query*\" OR name LIKE \"*Save*\" OR name LIKE \"*Delete*\"",
+  "examples": [
+    "FIND function WHERE name LIKE \"*DB*\"",
+    "FIND function WHERE name LIKE \"*Query*\"",
+    "FIND function WHERE name LIKE \"*Save*\" OR name LIKE \"*Update*\" OR name LIKE \"*Delete*\""
+  ],
+  "use_cases": [
+    "Identify data access layer",
+    "Find database operations",
+    "Analyze data flow"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "find_high_complexity",
+  "description": "Find functions with high cyclomatic complexity",
+  "category": "quality",
+  "query": "FIND function WHERE complexity > 15",
+  "examples": [
+    "FIND function WHERE complexity > 15",
+    "FIND function WHERE complexity > 10 ORDER BY complexity DESC LIMIT 10",
+    "FIND function WHERE complexity > 20 AND file LIKE \"*.go\""
+  ],
+  "use_cases": [
+    "Identify code that needs refactoring",
+    "Find hard-to-test functions",
+    "Prioritize code review efforts"
+  ]
+}

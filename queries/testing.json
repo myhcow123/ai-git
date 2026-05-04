@@ -1,0 +1,16 @@
+{
+  "name": "find_test_code",
+  "description": "Find all test functions and test files",
+  "category": "testing",
+  "query": "FIND function WHERE name LIKE \"Test*\" OR file LIKE \"*_test.go\"",
+  "examples": [
+    "FIND function WHERE name LIKE \"Test*\"",
+    "FIND function WHERE file LIKE \"*_test.go\"",
+    "FIND function WHERE name LIKE \"Benchmark*\""
+  ],
+  "use_cases": [
+    "Analyze test coverage",
+    "Find test helpers",
+    "Identify missing tests"
+  ]
+}

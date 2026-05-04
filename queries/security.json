@@ -1,0 +1,16 @@
+{
+  "name": "find_security_sensitive",
+  "description": "Find security-sensitive code (auth, crypto, validation)",
+  "category": "security",
+  "query": "FIND function WHERE name LIKE \"*Auth*\" OR name LIKE \"*Login*\" OR name LIKE \"*Crypt*\" OR name LIKE \"*Valid*\"",
+  "examples": [
+    "FIND function WHERE name LIKE \"*Auth*\"",
+    "FIND function WHERE name LIKE \"*Login*\" OR name LIKE \"*Password*\"",
+    "FIND function WHERE name LIKE \"*Crypt*\" OR name LIKE \"*Hash*\" OR name LIKE \"*Encrypt*\""
+  ],
+  "use_cases": [
+    "Security audit",
+    "Find authentication code",
+    "Identify encryption operations"
+  ]
+}

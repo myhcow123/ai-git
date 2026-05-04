@@ -1,0 +1,16 @@
+{
+  "name": "find_all_functions",
+  "description": "Find all function symbols in the project",
+  "category": "exploration",
+  "query": "FIND function",
+  "examples": [
+    "FIND function",
+    "FIND function WHERE file = \"main.go\"",
+    "FIND function WHERE complexity > 10"
+  ],
+  "use_cases": [
+    "Get overview of all functions",
+    "Find functions in specific files",
+    "Identify complex functions"
+  ]
+}
